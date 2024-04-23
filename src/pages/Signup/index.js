@@ -13,7 +13,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { updateName, updateUserEmail } from '../../actions';
 import { connect } from 'react-redux';
 
-const Signup = ({updateName, updateUserEmail}) => {
+const Signup = () => {
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
@@ -40,8 +40,8 @@ const Signup = ({updateName, updateUserEmail}) => {
                                 <h1 className="text-[#1E1F20] font-medium text-[22px] leading-[30px]">Create an account</h1>
                                 <p className="text-lightGray font-medium text-sm leading-5 pt-2.5">Sign up to continue </p>
                                 <form className="lg:mt-8 mt-3">
-                                    <CommonInput placeholder="Davin Wong" label="Name" type="text" onChange={(e) => updateName(e.target.value)}/>
-                                    <CommonInput label="Email" placeholder="davin.wong@mail.com" icon={IoCheckmarkCircleOutline} iconColor="#62CA76" onChange={(e) => updateUserEmail(e.target.value)}/>
+                                    <CommonInput placeholder="Davin Wong" label="Name" type="text"/>
+                                    <CommonInput label="Email" placeholder="davin.wong@mail.com" icon={IoCheckmarkCircleOutline} iconColor="#62CA76"/>
                                     <CommonInput
                                         label="password"
                                         type={showPassword ? "text" : "password"}
@@ -90,14 +90,7 @@ const Signup = ({updateName, updateUserEmail}) => {
     )
 }
 
-const mapStateToProps = (state) => ({
-    name: state.signUPform.name,
-    useremail: state.signUPform.useremail,
-});
+export default Signup;
 
-const mapDispatchToProps = {
-    updateName,
-    updateUserEmail,
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+
